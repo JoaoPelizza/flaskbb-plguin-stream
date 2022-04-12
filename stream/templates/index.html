@@ -1,0 +1,103 @@
+{% extends theme("layout.html") %}
+
+{% block css %}
+{{ super() }}
+
+<style>
+  /* news posts */
+  .stream-info {
+    font-size: 15px;
+    color: #999999;
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  .stream-info ul {
+    list-style-type: none;
+  }
+
+  .stream-info li {
+    display: inline;
+    padding-right: 10px;
+  }
+
+  .stream-info a {
+    color: #999999;
+  }
+
+  .stream-content h1,
+  .stream-content h2,
+  .stream-content h3,
+  .stream-content h4,
+  .stream-content h5 {
+    font-weight: 500;
+  }
+
+  .stream-content img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  /* recent topics */
+  .stream-topic:not(:first-child) {
+    padding-top: 5px;
+    clear: both;
+    border-top: 1px solid #ddd;
+  }
+
+  .stream-topic-name {
+    float: left;
+  }
+
+  .stream-topic-updated-by {
+    float: right;
+  }
+
+  .stream-topic-updated {
+    color: #999999;
+    clear: both;
+    float: right;
+  }
+
+  /* stats */
+  .stream-stats {
+    color: #999999;
+  }
+
+  .stream-stats:not(:first-child) {
+    padding-top: 5px;
+    clear: both;
+  }
+
+  .stream-stats-left {
+    float: left;
+  }
+
+  .stream-stats-right {
+    float: right;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+  <head>
+    <title>RTMP Embed</title>
+    <link href="https://vjs.zencdn.net/7.10.2/video-js.min.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+  </head>
+
+  <body>
+    <video id="streamContainer" class="video-js vjs-default-skin" controls preload="auto" width="640" height="320"
+      data-setup='{ "techorder" : ["html5]"}'>
+      <source src="http://{{ stream_ip }}:{{ stream_port }}/{{ hls_path }}" type="application/x-mpegURL">
+    </video>
+  </body>
+
+
+</div>
+{% endblock %}

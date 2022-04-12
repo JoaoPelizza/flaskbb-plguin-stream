@@ -1,0 +1,5 @@
+graft stream/templates
+graft stream/translations
+graft stream/migrations
+
+global-exclude *.pyc __pycache__ .keep
